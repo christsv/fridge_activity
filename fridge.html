@@ -74,12 +74,11 @@
 // added classes to the button to edit later with css or whatever
         letterBtn.addClass("letter-button letter letter-button-color");
 // so once we have classes we can now edit their parts with the attr
-        letterBtn.attr("data-letter", letterBtn[i]);
+        letterBtn.attr("data-letter", letters[i]);
 // give a value to each button with the for loop
         letterBtn.text(letters[i]);
 // here want the buttons we made attached to the div class buttons so that they show in that container  
         $("#buttons").append(letterBtn);
-
       }
       // Inside the loop...
 
@@ -98,6 +97,21 @@
       // MAJOR TASK #2: ATTACH ON-CLICK EVENTS TO "LETTER" BUTTONS
       // =================================================================================
 
+
+//so when u put # on a "Class" wont work thats only for ID. DUHHHH. 
+    $(".letter-button").on("click", function (){
+
+// create a new div via jquery style
+      var fridgeMagnet = $("<div>");
+// add the two classes to the div
+      fridgeMagnet.addClass("letter fridge-color");
+// every time the button "letter button class" is click it will put the "data-letter" text
+// in THIS button on the fridge
+      fridgeMagnet.text($(this).attr("data-letter"));
+// put each magnet on the display id
+      $("#display").append(fridgeMagnet);
+
+    });
       // 7. Create an "on-click" event attached to the ".letter-button" class.
 
       // Inside the on-click event...
@@ -114,7 +128,9 @@
 
       // MAJOR TASK #3: ATTACH ON-CLICK EVENTS TO "CLEAR" BUTTON
       // =================================================================================
-
+    $("#clear").on("click", function(){
+      $("#display").empty();
+    })
       // 12. Create an "on-click" event attached to the "#clear" button id.
 
       // Inside the on-click event...
